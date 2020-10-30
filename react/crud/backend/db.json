@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "name": "Maria Julia da Silva",
+      "email": "mjds@empresa.com"
+    },
+    {
+      "name": "Mosca Branca",
+      "email": "mb@teste.com",
+      "id": 3
+    },
+    {
+      "name": "Ana Silva",
+      "email": "as@meuteste.com.br",
+      "id": 4
+    }
+  ]
+}

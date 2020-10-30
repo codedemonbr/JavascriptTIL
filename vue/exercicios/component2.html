@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Componente 2</title>
+        <link rel="stylesheet" href="/css/estilo.css" />
+        <script src="/js/vue.min.js"></script>
+    </head>
+    <body class="exercicio">
+        <di id="app">
+            <contador></contador>
+            <contador></contador>
+            <contador></contador>
+            <contador></contador>
+            <contador></contador>
+            <contador></contador>
+        </di>
+        <script>
+            Vue.component('contador', {
+                /**
+                 * Muita atenção a esse detalhe. Para controlar o estado devemos retornar um objeto
+                 * e o data é uma função
+                 * */
+                data: function () {
+                    return { contador: 0 };
+                },
+                methods: {
+                    add() {
+                        this.contador++;
+                    },
+                    sub() {
+                        this.contador--;
+                    },
+                },
+                template: `
+                <div>
+                    <span>{{contador}}</span>
+                    <button @click="add">+1</button>
+                    <button @click="sub">-1</button>
+                </div>
+                `,
+            });
+
+            /**
+             * Sem criar a Vue instance e apontar qual elemento
+             * vai ser controlado, nada é rederizado em tela;
+             * */
+            new Vue({
+                el: '#app',
+            });
+        </script>
+    </body>
+</html>

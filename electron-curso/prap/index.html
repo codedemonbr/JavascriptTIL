@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Imagens propriedades</title>
+        <!-- <script src="./form.js"></script> -->
+    </head>
+    <body>
+        <form>
+            <div>
+                <input type="file" accept="image/*" />
+            </div>
+            <button type="submit">Mostrar dimensões</button>
+        </form>
+        <h1 id="result">Resultado</h1>
+        <script>
+            import electron from 'electron';
+            const { ipcRenderer } = electron;
+
+            document
+                .querySelector('form')
+                .addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    const { path } = document.querySelector('input').files[0];
+                    ipcRenderer.send('obterDimensoesDaImagem', path);
+                });
+
+            ipcRenderer.on('dimensoesDaImagem', (event, dimensions) => {
+                console.log(dimensions);
+                document.querySelector(
+                    '#result'
+                ).innerHTML = `Largura=${dimensions.width} Altura=${dimensions.height}`;
+            });
+        </script>
+    </body>
+</html>
