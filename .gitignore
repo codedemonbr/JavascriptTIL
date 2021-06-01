@@ -93,3 +93,7 @@ Thumbs.db
 
 #arquivos mac
 __MACOSX
+
+#lock
+yarn.lock
+package-lock.json

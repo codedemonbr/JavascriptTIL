@@ -4,12 +4,15 @@
   "description": "descrição",
   "main": "funcionarios.js",
   "scripts": {
-    "start": "nodemon",
+    "start": "nodemon funcionario.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Thiago Henrique dos Santos",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
