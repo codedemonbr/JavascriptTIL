@@ -261,7 +261,60 @@
 <hr />
 
 <!-- Accordion -->
-
+<div>
+    <div class="mb-5" id="accordion">
+        <div class="card">
+            <div class="card-header" id="pergunta1">
+                <h5 class="mb-0">
+                    <button
+                        class="btn btn-link"
+                        data-toggle="collapse"
+                        data-target="#resposta1"
+                    >
+                        Qual a sua comida favorita?
+                    </button>
+                </h5>
+            </div>
+            <div class="collapse" id="resposta1" data-parent="#accordion">
+                <div class="card-body">
+                    Tudo que tiver proteína de alta qualidade.
+                </div>
+            </div>
+            <div class="card-header" id="pergunta2">
+                <h5 class="mb-0">
+                    <button
+                        class="btn btn-link"
+                        data-toggle="collapse"
+                        data-target="#resposta2"
+                    >
+                        Qual a sua bebida favorita?
+                    </button>
+                </h5>
+            </div>
+            <div class="collapse" id="resposta2" data-parent="#accordion">
+                <div class="card-body">
+                    Café nos dias normais e ayahuasca em dias especiais
+                </div>
+            </div>
+            <div class="card-header" id="pergunta3">
+                <h5 class="mb-0">
+                    <button
+                        class="btn btn-link"
+                        data-toggle="collapse"
+                        data-target="#resposta3"
+                    >
+                        Qual a sua cidade favorita?
+                    </button>
+                </h5>
+            </div>
+            <div class="collapse" id="resposta3" data-parent="#accordion">
+                <div class="card-body">
+                    No Brasil São Paulo, que eu conheça outras pelo mundo.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     // funciona
     $('[data-toggle="tooltip"]').tooltip();
