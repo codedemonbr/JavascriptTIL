@@ -1,4 +1,11 @@
 import $ from "jquery";
+const loadHtmlSuccessCallbacks = [];
+
+export function onLoadHtmlSuccess(callback) {
+    if (!loadHtmlSuccessCallbacks.includes(callback)) {
+        loadHtmlSuccessCallbacks.push(callback);
+    }
+}
 
 function loadIncludes(parent) {
     if (!parent) parent = "body";
@@ -12,6 +19,10 @@ function loadIncludes(parent) {
                 success(data) {
                     $(element).html(data);
                     $(element).removeAttr("wm-include"); //removendo para o mesmo elemento não ser recarregado mais de uma vez
+
+                    loadHtmlSuccessCallbacks.forEach((callback) =>
+                        callback(data)
+                    );
 
                     loadIncludes(element); //chamada recursiva para caso os filhos tenham wm-include
                 },
