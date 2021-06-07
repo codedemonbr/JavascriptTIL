@@ -1,0 +1,53 @@
+import $ from "jquery";
+
+const duration = 300;
+
+function filterByCity(city) {
+    $("[wm-city]").each(function(i, el) {
+        const isTarget = $(this).attr("wm-city") === city || city === null;
+
+        if (isTarget) {
+            $(this)
+                .parent()
+                .removeClass("d-none");
+            $(this).fadeIn(duration);
+        } else {
+            $(this).fadeOut(duration, () => {
+                $(this)
+                    .parent()
+                    .addClass("d-none");
+            });
+        }
+    });
+}
+
+$.fn.cityButtons = function() {
+    const cities = new Set();
+
+    $("[wm-city]").each(function(i, el) {
+        cities.add($(el).attr("wm-city"));
+    });
+
+    const btns = Array.from(cities).map((city) => {
+        const btn = $("<button>")
+            .addClass(["btn", "btn-info"])
+            .html(city);
+        btn.on("click", (e) => filterByCity(city)); //metodo click substituido
+        return btn;
+    });
+
+    const btnAll = $("<button>")
+        .addClass(["btn", "btn-info", "active"])
+        .html("Todas");
+    btnAll.on("click", (e) => filterByCity(null));
+
+    btns.push(btnAll);
+
+    const btnGroup = $("<div>").addClass(["btn-group"]);
+    btnGroup.append(btns);
+
+    $(this).html(btnGroup);
+    return this;
+};
+
+$("[wm-city-buttons]").cityButtons();
